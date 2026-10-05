@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LADDU PRIVATE DATA 🔒</title>
+<style>
+:root{--bg:#030605;--fg:#39ff88;--red:#ff2a3d;--dim:#17382a;--card:#0a1410;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Courier New",monospace;min-height:100vh}
+.top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--red);color:#fff;font-size:13px;font-weight:bold;overflow:hidden;white-space:nowrap;padding:6px 0;z-index:9}
+.top span{display:inline-block;padding-left:100%;animation:m 12s linear infinite}
+@keyframes m{to{transform:translateX(-100%)}}
+main{max-width:640px;margin:0 auto;padding:18px 16px 90px}
+h1{font-size:clamp(28px,8vw,46px);text-align:center;margin:18px 0 6px;color:#fff;animation:g 2s infinite}
+@keyframes g{0%,90%,100%{text-shadow:2px 0 var(--red),-2px 0 var(--fg);transform:none}93%{text-shadow:-4px 0 var(--red),4px 0 var(--fg);transform:translateX(3px)}96%{transform:translateX(-3px)}}
+.sub{text-align:center;color:var(--red);margin-bottom:18px}
+button{background:transparent;color:var(--fg);border:1px solid var(--fg);padding:13px;font:inherit;cursor:pointer;width:100%;margin-top:12px;border-radius:6px}
+button:active{background:var(--fg);color:#000}
+.hide{display:none!important}
+#term{font-size:12.5px;line-height:1.55;height:46vh;overflow:hidden;white-space:pre-wrap;word-break:break-all}
+.bar{height:14px;border:1px solid var(--fg);margin:12px 0;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--fg)}
+#cd{text-align:center;color:var(--red);font-size:20px;font-weight:bold;margin-top:8px}
+#red{position:fixed;inset:0;background:#7a0010;color:#fff;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;animation:bl .6s infinite}
+@keyframes bl{50%{background:#b8001a}}
+#red h2{font-size:clamp(26px,8vw,44px);margin:0 0 14px}#red p{font-size:18px;line-height:1.5;max-width:460px}
+.card{background:var(--card);border:1px solid var(--dim);border-radius:8px;padding:12px;margin-top:10px;color:#e8fff1;line-height:1.55;animation:in .5s}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.card b{color:var(--fg)}
+.file{cursor:pointer;border-color:var(--fg);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.file em{color:var(--red);font-style:normal;font-size:12px}
+#sos{position:fixed;inset:0;z-index:25;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;animation:sb .5s infinite}
+@keyframes sb{50%{background:#5a0000}}
+#sos h2{font-size:clamp(40px,14vw,80px);margin:0;color:var(--red)}#sos p{font-size:18px;line-height:1.6;max-width:460px}
+#sos button{max-width:260px;color:#fff;border-color:#fff}
+.toast{position:fixed;left:12px;right:12px;top:60px;background:#000;border:2px solid var(--red);color:var(--red);padding:12px;text-align:center;z-index:30;border-radius:6px;font-weight:bold}
+footer{position:fixed;bottom:0;left:0;right:0;text-align:center;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));font-size:13px;background:#000;border-top:1px solid var(--dim);color:#9fe8bd;z-index:40}
+</style></head><body>
+<div class="top"><span>⚠ Data collected by Aman Singh ⚠ Data collected by Aman Singh ⚠ Data collected by Aman Singh ⚠ Data collected by Aman Singh</span></div>
+<main>
+<section id="s1">
+<h1>LADDU<br>PRIVATE DATA</h1>
+<div class="sub">🔒 TOP SECRET · BGS → MUNGER CLASSIFIED 🔒</div>
+<div class="card">Warning: This file is for authorised personnel only. Tracking starts the moment you open it.<br>Weak hearts, <b>do not</b> proceed.</div>
+<button id="go">OPEN FILE ⚠</button>
+</section>
+<section id="s2" class="hide">
+<div id="term"></div><div class="bar"><i id="pb"></i></div><div id="cd"></div>
+</section>
+<section id="s4" class="hide">
+<h1 style="font-size:30px">CASE FILE: LADDU 🍬</h1>
+<div class="sub">(the real private data, finally revealed)</div>
+<div id="cards"></div>
+<div id="files"></div>
+<button id="again" class="hide">Watch again 😈</button>
+</section>
+</main>
+<div id="red" class="hide"><h2>⚠ YOUR PHONE HAS BEEN HACKED ⚠</h2><p>Why did you click the link?<br>All your files are being encrypted.</p><p id="wipe" style="color:#ffb3bb">Encrypting... 0%</p></div>
+<div id="sos" class="hide"><h2>🚨 SOS 🚨</h2><p id="sosmsg"></p><button id="sosx">Close 😭</button></div>
+<footer>Made with 😈 by <b>Abhiranjan</b></footer>
+<script>
+const $=id=>document.getElementById(id),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const vib=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+const hex=n=>[...Array(n)].map(()=>Math.floor(Math.random()*16).toString(16)).join("");
+const ip=()=>[1,2,3,4].map(()=>Math.floor(Math.random()*255)).join(".");
+const steps=["Initializing exploit kit v6.6.6","Bypassing firewall ........ OK","Tracing device IP: "+ip(),"Cracking root password ... ####","Injecting payload 0x"+hex(8),"Accessing contacts ........ GRANTED","Accessing gallery ......... GRANTED","Reading chat history ...... GRANTED","Camera module ............ ON 🔴","Uploading to server: aman-singh.db","Location locked: BGS → MUNGER","Disabling antivirus ....... DONE","Copying private data ...... 78%","WARNING: user is watching this screen"];
+let run=0;
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);vib(200);setTimeout(()=>d.remove(),2000)}
+window.addEventListener("popstate",()=>{if(run){history.pushState({},"");toast("⛔ ACCESS DENIED: Exit disabled")}});
+$("go").onclick=async()=>{
+ run=1;try{history.pushState({},"")}catch(e){}
+ $("s1").classList.add("hide");$("s2").classList.remove("hide");vib([300,100,300]);
+ const t=$("term");let n=0;
+ const tick=setInterval(()=>{t.textContent+="0x"+hex(6)+"  "+hex(28)+"\n";t.scrollTop=1e5},90);
+ for(const s of steps){t.textContent+="\n[+] "+s+"\n";n++;$("pb").style.width=(n/steps.length*100)+"%";vib(60);await sleep(750)}
+ clearInterval(tick);
+ t.textContent+="\n[!] SYSTEM LOCK INITIATED\n";
+ for(let i=10;i>0;i--){$("cd").textContent="PHONE LOCK IN 00:"+String(i).padStart(2,"0");vib(i<4?[200,80,200]:80);await sleep(1000)}
+ $("cd").textContent="";$("red").classList.remove("hide");
+ for(let p=0;p<=100;p+=5){$("wipe").textContent="Encrypting... "+p+"%";vib(40);await sleep(120)}
+ await sleep(1500);$("wipe").innerHTML="Encrypting... 99%<br>...<br>...";await sleep(2200);
+ $("red").classList.add("hide");run=0;$("s2").classList.add("hide");$("s4").classList.remove("hide");reveal();
+};
+const cards=["😂 <b>Relax, bro!</b> Your phone is perfectly fine. This was just a prank in Laddu's name. Take a deep breath.","📁 <b>Real private data #1:</b> The bus leaves at 6:00 AM. Laddu wakes up after 6:00 AM. 😴","📁 <b>Real private data #2:</b> \"Coming in 5 minutes\" is Laddu's national slogan. 🚌","📁 <b>Real private data #3:</b> Everyone wants a window seat from BGS to Munger. Only Laddu gets the tension. 😭","📁 <b>Real private data #4:</b> 14 cups of chai, zero exam tension, 100% confidence. ☕","🍬 <b>Why Laddu?</b><br>Because Naveen keeps everyone happy, handles the bus every exam season, and everyone keeps begging him: \"Laddu bhai, one seat please!\" Hence the name stuck: LADDU.","🕵️ <b>Data collected by Aman Singh</b> (which means nothing was actually collected 😎)","🔓 <b>One last file is unlocked. Tap it if you dare:</b>"];
+async function reveal(){const c=$("cards");c.innerHTML="";$("files").innerHTML="";$("again").classList.add("hide");
+ for(const h of cards){const d=document.createElement("div");d.className="card";d.innerHTML=h;c.appendChild(d);d.scrollIntoView({behavior:"smooth",block:"center"});vib(40);await sleep(1900)}
+ const f=document.createElement("div");f.className="card file";f.innerHTML="<b>📷 laddu_girlfriend.jpg</b><em>CLICK TO VIEW</em>";f.onclick=girl;$("files").appendChild(f);
+ f.scrollIntoView({behavior:"smooth",block:"center"});$("again").classList.remove("hide")}
+async function girl(){
+ const s=$("sos"),m=$("sosmsg");s.classList.remove("hide");m.innerHTML="Opening laddu_girlfriend.jpg ...";vib(100);
+ await sleep(1200);m.innerHTML="Searching all folders ...";await sleep(1200);m.innerHTML="Scanning gallery, WhatsApp, Instagram ...";await sleep(1400);
+ m.innerHTML="ERROR 404: Girlfriend not found.<br><br><b style='font-size:26px'>Koi nhi hai. 😭</b><br><br>Please send help (and a girlfriend) to Laddu.";vib([300,100,300,100,300]);
+}
+$("sosx").onclick=()=>$("sos").classList.add("hide");
+$("again").onclick=()=>location.reload();
+</script></body></html>
